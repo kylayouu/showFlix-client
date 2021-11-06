@@ -26,6 +26,10 @@ class MainView extends React.Component {
 			});
 	}
 
+	componentWillUnmount() {
+		
+	}
+
 	setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
