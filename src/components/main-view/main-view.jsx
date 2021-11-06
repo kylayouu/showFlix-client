@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 
@@ -7,13 +9,21 @@ class MainView extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			movies: [
-				{_id: 1, Title: 'Inception', Description: 'The film stars Leonardo DiCaprio as a professional thief who steals information by infiltrating the subconscious of his targets.', Genre: 'Sci-Fi', Director: 'Christopher Nolan', ImagePath: 'inception.jpeg'},
-				{_id: 2, Title: 'The Shawshank Redemption', Description: 'It tells the story of banker Andy Dufresne (Tim Robbins), who is sentenced to life in Shawshank State Penitentiary for the murders of his wife and her lover, despite his claims of innocence.', Genre: 'Drama', Director: 'Frank Darabont', ImagePath: 'shawshank_redemption.jpeg'},
-				{_id: 3, Title: 'Gladiator', Description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.', Genre: 'Action', Director: 'Ridley Scott', ImagePath: 'gladiator.jpeg'}
-			],
+			movies: [],
 			selectedMovie: null
 		};
+	}
+
+	componentDidMount() {
+		axios.get('https://cryptic-tor-08539.heroku.app/movies')
+			.then(response => {
+				this.setState({
+					movies: response.data
+				});
+			})
+			.catch(error => {
+				console.log(error);
+			});
 	}
 
 	setSelectedMovie(newSelectedMovie) {
@@ -38,6 +48,8 @@ class MainView extends React.Component {
     </div>
 		);
   }
+
+
 }
 
 export default MainView;
