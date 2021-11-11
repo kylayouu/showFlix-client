@@ -22756,7 +22756,7 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://cryptic-tor-08539.heroku.app/movies').then((response)=>{
+        _axiosDefault.default.get('https://cryptic-tor-08539.herokuapp.com/movies').then((response)=>{
             this.setState({
                 movies: response.data
             });
