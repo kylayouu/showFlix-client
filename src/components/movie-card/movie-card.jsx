@@ -6,7 +6,7 @@ class MovieCard extends React.Component {
 		const { movie, onMovieClick } = this.props;
     return <div className='movie-card' onClick={ () => { onMovieClick(movie); } } aria-hidden="true">{movie.Title}</div>;
   }
-}
+};
 
 MovieCard.propTypes = {
 	movie: PropTypes.shape({
@@ -17,4 +17,4 @@ MovieCard.propTypes = {
 	onMovieClick: PropTypes.func.isRequired
 };
 
-export default MovieCard
+export default MovieCard;

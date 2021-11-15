@@ -29,7 +29,7 @@ function RegistrationView(props) {
       <button type="submit" onClick={handleSubmit}>Submit</button>
     </form>
   );
-}
+};
 
 RegistrationView.PropTypes = {
 	registration: PropTypes.shape({
@@ -39,4 +39,4 @@ RegistrationView.PropTypes = {
 	}).isRequired,
 };
 
-export default RegistrationView
+export default RegistrationView;

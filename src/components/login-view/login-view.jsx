@@ -29,6 +29,6 @@ function LoginView(props) {
 			<button>Register Here</button>
 		</div>
   );
-}
+};
 
-export default LoginView
+export default LoginView;
