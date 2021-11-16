@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
+import LoginView from '../login-view/login-view';
+import RegistrationView from '../registration-view/registration-view';
 
 class MainView extends React.Component {
 
@@ -32,9 +34,19 @@ class MainView extends React.Component {
     });
   }
 
+/* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+	onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
+
   render() {
-		const { movies, selectedMovie } = this.state;
+		const { movies, selectedMovie, user } = this.state;
 		
+		/* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
 		if (movies.length === 0) return <div className='main-view' />;
 
 		return (
@@ -44,11 +56,10 @@ class MainView extends React.Component {
         : movies.map(movie => (
           <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
         ))
-      }
+      };
     </div>
 		);
   }
-
 
 }
 
