@@ -1,4 +1,10 @@
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { Card, Col } from 'react-bootstrap';
+import './login-view.scss';
 
 function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -13,21 +19,30 @@ function LoginView(props) {
   };
 
   return (
-		<div>
-			<form>
-				<label>
-					Username:
-					<input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-				</label>
-				<label>
-					Password:
-					<input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-				</label>
-				<button type="submit" onClick={handleSubmit}>Submit</button>
-			</form>
-			New User?
-			<button>Register Here</button>
-		</div>
+		<Container className='login-container'>
+			<Row className='justify-content-center'>
+				<Col md={8} lg={8} xl={8}>
+					<Card className='login-card'>
+						<Card.Title>LOGIN</Card.Title>
+						<Card.Body>
+							<Form>
+								<Form.Group>
+									<Form.Label>Username:</Form.Label>
+									<Form.Control type='text' placeholder='Enter your username' value={username} onChange={e => setUsername(e.target.value)} />
+								</Form.Group>	
+								<Form.Group>
+									<Form.Label>Password:</Form.Label>
+									<Form.Control type='password' placeholder='Enter your password' value={password} onChange={e => setPassword(e.target.value)} />
+								</Form.Group>
+							</Form>
+						</Card.Body>
+						<Card.Footer>
+							<Button variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
+						</Card.Footer>
+					</Card>
+				</Col>
+			</Row>
+		</Container>
   );
 };
 
