@@ -1,0 +1,91 @@
+.movie-card {
+  border-style: solid;
+  border-radius: 2em;
+  border-width: 0.1em;
+  border-color: #4b4b4b;
+  box-shadow: 1px 1px 10px 1px #888888;
+  background-color: #fff;
+  margin: 1em 0 1em 0;
+}
+.movie-card .card {
+  border-radius: 2em !important;
+  border-color: #fff;
+}
+.movie-card .card-title {
+  text-align: center;
+}
+.movie-card .card-footer {
+  text-align: center;
+}
+.movie-view-container {
+  height: 100vh;
+  padding: 4em 0em;
+}
+.movie-view-container .row {
+  width: 100%;
+}
+.movie-view-container .movie-card-info {
+  padding: 2em;
+}
+.movie-view-container .movie-title {
+  font-size: 32px;
+  text-align: center;
+}
+.movie-view-container .label {
+  font-weight: bold;
+}
+.movie-view-container .movie-description {
+  font-size: 20px;
+  padding: 0.5em 0;
+}
+.movie-view-container .movie-poster {
+  box-shadow: 1px 1px 10px 1px #888888;
+  padding: 1em;
+}
+.login-container {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  height: 100vh;
+  padding: 4em 0em;
+}
+.login-container .card {
+  box-shadow: 1px 1px 10px 1px #888888;
+}
+.login-container .card-title {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+.login-container .card-body {
+  margin: 0em 1em 1em 1em;
+}
+.login-container .card-footer {
+  text-align: center;
+}
+.registration-container {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  height: 100vh;
+  padding: 4em 0em;
+}
+.registration-container .card {
+  box-shadow: 1px 1px 10px 1px #888888;
+}
+.registration-container .card-title {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+.registration-container .card-body {
+  margin: 0em 1em 1em 1em;
+}
+.registration-container .card-footer {
+  text-align: center;
+}
+.main-view-container {
+  height: 100vh;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  padding: 4em 0em;
+}
+.my-flix {
+  color: steelblue;
+}
+/*# sourceMappingURL=index.3f764291.css.map */
