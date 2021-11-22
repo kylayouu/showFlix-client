@@ -22833,6 +22833,7 @@ class MainView extends _reactDefault.default.Component {
                         __self: this
                     })
                 }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Col, {
+                        className: "d-flex",
                         md: 6,
                         lg: 4,
                         xl: 3,
