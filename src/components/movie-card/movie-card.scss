@@ -1,0 +1,22 @@
+.movie-card {
+	border-style: solid;
+	border-radius: 2em;
+	border-width: .1em;
+	border-color: rgb(75, 75, 75);
+	box-shadow: 1px 1px 10px 1px #888888;
+	background-color: #fff;
+	margin: 1em 0 1em 0;
+
+	.card {
+		border-radius: 2em !important;
+		border-color: #fff;
+	};
+
+	.card-title {
+		text-align: center;
+	};
+
+	.card-footer {
+		text-align: center;
+	}
+}
