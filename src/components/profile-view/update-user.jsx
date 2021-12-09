@@ -1,8 +1,7 @@
 import React from "react";
 import { Form, Button } from 'react-bootstrap';
 
-function UpdateUser({editUsername, editPassword, editEmail, editBirthdate, handleUpdate}) {
-	const user = localStorage.getItem('user');
+function UpdateUser({editUsername, editPassword, editEmail, editBirthdate, handleUpdate, user}) {
 	return (
 		<Form onSubmit={(e) => handleUpdate(e)}>
 			<Form.Label>Username</Form.Label>

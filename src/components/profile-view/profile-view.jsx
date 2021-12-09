@@ -142,16 +142,18 @@ class ProfileView extends React.Component {
 	}
 
   render() {
-		const { user, movies } = this.props;
-		const FavoriteMovies = movies.filter(movie => {
-			return this.state.FavoriteMovies.includes(movie._id)
+		const { removeFaveMovie, editUsername, editPassword, editEmail, editBirthdate, handleUpdate } = this.state;
+		const { movie, user } = this.props;
+
+		const FavoriteMovies = movie.filter(m => {
+			return this.state.FavoriteMovies.includes(m._id)
 		})
 
 		return (
-			<Container className="profileWrapper">
+			<Container className="profileWrapper" id='profile'>
 				<UserInfo />
-				<FavoriteMovies FavoriteMovies={FavoriteMovies} />
-				<UpdateUser editUsername={editUsername} editPassword={editPassword} editEmail={editEmail} editPassword={editPassword} handleUpdate={handleUpdate}/>
+				{/* <FavoriteMovies movie={movie} FavoriteMovies={FavoriteMovies} removeFaveMovie={removeFaveMovie}/> */}
+				<UpdateUser user={user} editUsername={editUsername} editPassword={editPassword} editEmail={editEmail} editBirthdate={editBirthdate} handleUpdate={handleUpdate}/>
 			</Container>
 		);
   }

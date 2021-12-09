@@ -111,7 +111,7 @@ class MainView extends React.Component {
             render={({ history }) => {
 							if (newUser) return <RegistrationView />;
 							if (movies.length === 0) return <div className='main-view' />;
-              return <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />;
+              return <ProfileView movie={movies} user={user} onBackClick={() => history.goBack()} />;
             }} />
 
 						<Route path='/register' render={() => {
