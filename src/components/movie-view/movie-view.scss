@@ -27,5 +27,9 @@
 	.movie-poster {
 		box-shadow: 1px 1px 10px 1px #888888;
 		padding: 1em;
+
+		img {
+			width: 100%;
+		}
 	}
 }

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Container, Row, Col, Button, Card } from 'react-bootstrap';
 import { CLIENT_RENEG_WINDOW } from "tls";
 import './movie-view.scss';
+import { Link } from "react-router-dom";
 
 class MovieView extends React.Component {
 
@@ -26,10 +27,10 @@ class MovieView extends React.Component {
 		return (
 			<Container className='movie-view-container'>
 				<Row>
-						<Col className='movie-poster col-3'>
-							<img src={movie.ImagePath} alt='imagepath' />
-						</Col>
-						<Col>
+					<Col className='movie-poster col-3'>
+						<img src={movie.ImagePath} alt='imagepath' className='img-responsive' />
+					</Col>
+					<Col>
 						<Card className='movie-card-info'>
 							<Card.Title className='movie-title'>
 								<span className='label'>Title: </span>
@@ -42,18 +43,20 @@ class MovieView extends React.Component {
 								</div>
 								<div className='movie-description'>
 									<span className='label'>Genre: </span>
-									<span className='value'>{movie.Genre.Name}</span>
+									<Link to={`/genres/${movie.Genre.Name}`}>
+										<Button variant='link'>{movie.Genre.Name}</Button>
+									</Link>
 								</div>
 								<div className='movie-description'>
 									<span className='label'>Director: </span>
-									<span className='value'>{movie.Director.Name}</span>
+									<Link to={`/directors/${movie.Director.Name}`}>
+										<Button variant='link'>{movie.Director.Name}</Button>
+									</Link>
 								</div>
 							</Card.Body>
-						<Button onClick={() => { onBackClick(null) }}>Back</Button>
+							<Button onClick={() => { onBackClick(null) }}>Back</Button>
 						</Card>
-						</Col>
-						
-						
+					</Col>
 				</Row>
 			</Container>
 		);

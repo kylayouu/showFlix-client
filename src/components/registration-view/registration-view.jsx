@@ -4,14 +4,28 @@ import { Form, Card, Container, Row, Col, Button } from 'react-bootstrap';
 import './registration-view.scss';
 
 function RegistrationView(props) {
-	const [ email, setEmail ] = useState('');
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ birthdate, setBirthdate ] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, username, password);
-    props.onRegistration(username);
+    console.log( username, password, email, birthdate);
+		axios.post('https://cryptic-tor-08539.herokuapp.com/register', {
+			Username: username,
+			Password: password,
+			Email: email,
+			Birthdate: birthdate
+		})
+		.then(response => {
+			const data = response.data;
+			console.log(data);
+			window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+		})
+		.catch(e => {
+			console.log('error registering the user')
+		});
   };
 
   return (
@@ -28,7 +42,7 @@ function RegistrationView(props) {
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Birthdate:</Form.Label>
-									<Form.Control type='text' placeholder='Enter your birthdate ( DD-MM-YYYY)' value={username} onChange={e => setUsername(e.target.value)} />
+									<Form.Control type='text' placeholder='Enter your birthdate ( DD-MM-YYYY)' value={username} onChange={e => setBirthdate(e.target.value)} />
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Username:</Form.Label>
@@ -52,11 +66,11 @@ function RegistrationView(props) {
 
 RegistrationView.propTypes = {
 	newUser: PropTypes.shape({
-		Email: PropTypes.string.isRequired,
-		Birthdate: PropTypes.string.isRequired,
 		Username: PropTypes.string.isRequired,
 		Password: PropTypes.string.isRequired,
-	}).isRequired,
+		Email: PropTypes.string.isRequired,
+		Birthdate: PropTypes.string.isRequired
+	})
 };
 
 export default RegistrationView;
