@@ -7,6 +7,7 @@ import { Card, Col } from 'react-bootstrap';
 import './login-view.scss';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -51,6 +52,12 @@ function LoginView(props) {
 							<Button variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
 						</Card.Footer>
 					</Card>
+					<div className='user-status'>
+						New User?
+						<span className='user-status'>
+							<Link to={`/register`}>Register Here</Link>
+						</span>
+					</div>
 				</Col>
 			</Row>
 		</Container>

@@ -9,7 +9,7 @@
 
 	img {
 		width: 100%;
-		height: 15vw;
+		height: 300px;
 		border-top-left-radius: 2em !important;
 		border-top-right-radius: 2em !important;
 		object-fit: cover;
@@ -27,5 +27,11 @@
 
 	.card-footer {
 		text-align: center;
+		margin-top: auto;
+	}
+
+	.movie-card-btn {
+		color: #fff;
+		background-color:#464646;
 	}
 }

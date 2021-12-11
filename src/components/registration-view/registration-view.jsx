@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Card, Container, Row, Col, Button } from 'react-bootstrap';
 import './registration-view.scss';
+import { Link } from 'react-router-dom';
 
-function RegistrationView(props) {
+function RegistrationView() {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 	const [ email, setEmail ] = useState('');
@@ -42,7 +43,7 @@ function RegistrationView(props) {
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Birthdate:</Form.Label>
-									<Form.Control type='text' placeholder='Enter your birthdate ( DD-MM-YYYY)' value={username} onChange={e => setBirthdate(e.target.value)} />
+									<Form.Control type='date' placeholder='Enter your birthdate' value={birthdate} onChange={e => setBirthdate(e.target.value)} />
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Username:</Form.Label>
@@ -58,6 +59,12 @@ function RegistrationView(props) {
 							<Button type='submit' variant='primary' onClick={handleSubmit}>Submit</Button>
 						</Card.Footer>
 					</Card>
+					<div className='user-status'>
+						Already have an account?
+						<span className='user-status'>
+							<Link to={`/`}>Log In</Link>
+						</span>
+					</div>
 				</Col>
 			</Row>
 		</Container>

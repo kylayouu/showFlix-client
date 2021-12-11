@@ -92,7 +92,7 @@ class MainView extends React.Component {
 
 		return (
 			<Router>
-				<NavbarView />
+				<NavbarView user={user} />
 				<Container className='main-view-container'>
 					<button onClick={() => { this.onLoggedOut() }}>Logout</button>
 					<Row className='main-view justify-content-md-center'>
@@ -101,23 +101,27 @@ class MainView extends React.Component {
     					if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
 							if (movies.length === 0) return <div className='main-view' />;
 							return movies.map(movie => (
-								<Col className='d-flex' md={6} lg={4} xl={3} key={movie._id}>
+								<Col className='d-flex justify-content-center' md={6} lg={4} xl={3} key={movie._id}>
 									<MovieCard movie={movie} />
 								</Col>
 							))
 						}} />
 
-						<Route exact path="/users/:Username"
+						<Route exact path='/users/:Username'
             render={({ history }) => {
 							if (newUser) return <RegistrationView />;
 							if (movies.length === 0) return <div className='main-view' />;
-              return <ProfileView movie={movies} user={user} onBackClick={() => history.goBack()} />;
+              return <ProfileView movies={movies} user={user} onBackClick={() => history.goBack()} />;
             }} />
 
 						<Route path='/register' render={() => {
 							if (newUser) return <RegistrationView />;
 							if (user) return <Redirect to='/' />;
 							return <RegistrationView />
+						}} />
+
+						<Route path='/login' render={() => {
+							return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
 						}} />
 
 						<Route path='/movies/:movieId' render={({ match, history }) => {

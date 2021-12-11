@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import './profile-view.scss';
 import UserInfo from './user-info';
-import FavoriteMovies from './favorite-movies';
+import UserFavoriteMovies from './user-favorite-movies';
 import UpdateUser from './update-user';
 
 class ProfileView extends React.Component {
@@ -53,7 +53,7 @@ class ProfileView extends React.Component {
 				FavoriteMovies: response.data.FavoriteMovies
 			});
 		}).catch(error => {
-			console.error(error)
+			console.log(error)
 		})
 	}
 
@@ -100,7 +100,7 @@ class ProfileView extends React.Component {
 				Birthdate: response.data.Birthdate
 			});
 		}).catch(error => {
-			console.error(error);
+			console.log(error);
 		});
 	}
 
@@ -117,7 +117,7 @@ class ProfileView extends React.Component {
 			console.log(response.data.FavoriteMovies);
 			this.componentDidMount;
 		}).catch(error => {
-			console.error(error);
+			console.log(error);
 		})
 	}
 
@@ -137,23 +137,23 @@ class ProfileView extends React.Component {
 				user: null
 			});
 		}).catch(error => {
-			console.error(error + 'There has been an error.')
+			console.log(error + 'There has been an error.')
 		})
 	}
 
   render() {
 		const { removeFaveMovie, editUsername, editPassword, editEmail, editBirthdate, handleUpdate } = this.state;
-		const { movie, user } = this.props;
+		const { movies, user } = this.props;
 
-		const FavoriteMovies = movie.filter(m => {
+		const FavoriteMovies = movies.filter(m => {
 			return this.state.FavoriteMovies.includes(m._id)
 		})
 
 		return (
 			<Container className="profileWrapper" id='profile'>
 				<UserInfo />
-				{/* <FavoriteMovies movie={movie} FavoriteMovies={FavoriteMovies} removeFaveMovie={removeFaveMovie}/> */}
 				<UpdateUser user={user} editUsername={editUsername} editPassword={editPassword} editEmail={editEmail} editBirthdate={editBirthdate} handleUpdate={handleUpdate}/>
+				<UserFavoriteMovies movie={movies} FavoriteMovies={FavoriteMovies} removeFaveMovie={removeFaveMovie}/>
 			</Container>
 		);
   }
