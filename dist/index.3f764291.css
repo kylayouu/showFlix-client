@@ -52,6 +52,9 @@
   font-size: 20px;
   padding: 0.5em 0;
 }
+.movie-view-container button {
+  font-size: 20px;
+}
 .movie-view-container .movie-poster {
   box-shadow: 1px 1px 10px 1px #888888;
   padding: 1em;
