@@ -1,3 +1,28 @@
+.login-container {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  height: 100vh;
+  padding: 4em 0em;
+}
+.login-container .card {
+  box-shadow: 1px 1px 10px 1px #888888;
+}
+.login-container .card-title {
+  text-align: center;
+  margin-top: 1em;
+  margin-bottom: 0em;
+}
+.login-container .card-body {
+  margin: 0em 1em 1em 1em;
+}
+.login-container .card-footer {
+  text-align: center;
+}
+
+.user-status {
+  font-size: 20px;
+  text-align: center;
+  padding: 2em 1em;
+}
 .movie-card {
   border-style: solid;
   border-radius: 2em;
@@ -60,31 +85,6 @@
   width: 100%;
   height: 400px;
   object-fit: cover;
-}
-.login-container {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-  height: 100vh;
-  padding: 4em 0em;
-}
-.login-container .card {
-  box-shadow: 1px 1px 10px 1px #888888;
-}
-.login-container .card-title {
-  text-align: center;
-  margin-top: 1em;
-  margin-bottom: 0em;
-}
-.login-container .card-body {
-  margin: 0em 1em 1em 1em;
-}
-.login-container .card-footer {
-  text-align: center;
-}
-
-.user-status {
-  font-size: 20px;
-  text-align: center;
-  padding: 2em 1em;
 }
 .registration-container {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
@@ -162,4 +162,4 @@
 .my-flix {
   color: steelblue;
 }
-/*# sourceMappingURL=index.3f764291.css.map */
+/*# sourceMappingURL=index.1d334ea1.css.map */

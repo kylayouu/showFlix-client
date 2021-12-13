@@ -27,10 +27,10 @@ class MovieView extends React.Component {
 		return (
 			<Container className='movie-view-container'>
 				<Row>
-					<Col className='movie-poster col-3'>
-						<img src={movie.ImagePath} alt='imagepath' className='img-responsive' />
+					<Col className='movie-poster' xs={3} md={4}>
+						<img src={movie.ImagePath} alt='imagepath' />
 					</Col>
-					<Col>
+					<Col xs={9} md={8}>
 						<Card className='movie-card-info'>
 							<Card.Title className='movie-title'>
 								<span className='label'>Title: </span>

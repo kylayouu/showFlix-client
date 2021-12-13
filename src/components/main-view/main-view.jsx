@@ -56,14 +56,7 @@ class MainView extends React.Component {
       selectedMovie: newSelectedMovie
     });
   };
-
-	// When a new user registers
-	// onRegistration(newUser) {
-	// 	this.setState({
-	// 		newUser
-	// 	})
-	// };
-
+	
 /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
 	onLoggedIn(authData) {
 		console.log(authData);
@@ -73,6 +66,7 @@ class MainView extends React.Component {
 
 		localStorage.setItem('token', authData.token);
 		localStorage.setItem('user', authData.user.Username);
+		// this.props.getUser(authData.token);
 		this.getMovies(authData.token);
   };
 
@@ -86,15 +80,11 @@ class MainView extends React.Component {
 
   render() {
 		const { movies, user, newUser } = this.state;
-		
-		// When a user registers
-		// if (!newUser) return <RegistrationView onRegistration={newUser => this.onRegistration(newUser)} />;
 
 		return (
 			<Router>
 				<NavbarView user={user} />
 				<Container className='main-view-container'>
-					<button onClick={() => { this.onLoggedOut() }}>Logout</button>
 					<Row className='main-view justify-content-md-center'>
 
 						<Route exact path='/' render={() => {

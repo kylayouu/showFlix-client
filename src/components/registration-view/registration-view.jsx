@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Card, Container, Row, Col, Button } from 'react-bootstrap';
 import './registration-view.scss';
@@ -13,7 +14,7 @@ function RegistrationView() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log( username, password, email, birthdate);
-		axios.post('https://cryptic-tor-08539.herokuapp.com/register', {
+		axios.post('https://cryptic-tor-08539.herokuapp.com/users/register', {
 			Username: username,
 			Password: password,
 			Email: email,
