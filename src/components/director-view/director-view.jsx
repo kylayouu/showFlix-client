@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 import './director-view.scss';
 
 function DirectorView(props) {
-	const { director } = props;
+	const { director, onBackClick } = props;
 	
 	return (
 		<Container className='director-view-container'>
 			<Row>
 				<Col>
-					<Card className='movie-card-info'>
-						<Card.Title className='movie-title'>
-							<span className='label'>Name: </span>
+					<Card className='director-card-info'>
+						<Card.Title className='director-name'>
 							<span className='value'>{director.Name}</span>
 						</Card.Title>
-						<Card.Body className='movie-description'>
+						<Card.Body className='director-description'>
 							<div>
 								<span className='label'>Bio: </span>
 								<span className='value'>{director.Bio}</span>
@@ -25,9 +24,7 @@ function DirectorView(props) {
 								<span className='value'>{director.Birth}</span>
 							</div>
 						</Card.Body>
-						<Link to={'/'}>
-							<Button variant='link'>Back</Button>
-						</Link>
+						<Button onClick={() => { onBackClick(null) }}>Back</Button>
 					</Card>
 				</Col>
 			</Row>

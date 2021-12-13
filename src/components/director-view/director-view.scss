@@ -1,0 +1,28 @@
+.director-view-container {
+	height: 100vh;
+	padding: 4em 0em;
+
+	.director-card-info {
+		padding: 2em;
+	}
+
+	.director-name {
+		font-size: 32px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.label {
+		font-size: 22px;
+		font-weight: bold;
+	}
+	
+	.director-description {
+		font-size: 22px;
+		padding: .5em 0;
+	}
+
+	button {
+		font-size: 20px;
+	}
+}
