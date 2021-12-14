@@ -2,10 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './movie-card.scss';
 import { CardGroup, Card, Button } from 'react-bootstrap';
-
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 class MovieCard extends React.Component {
+	addToFav(id) {
+		const token = localStorage.getItem('token');
+		const Username = localStorage.getItem('user');
+		axios.post(`https://cryptic-tor-08539.herokuapp.com/users/${Username}/favorites/${id}`, {
+			headers: { Authorization: `Bearer ${token}` }
+		}).then(response => {
+			console.log(response)
+			alert ('The movie has been added to favorites.')
+		}).catch(error => {
+			alert ('Failed to add move to favorites.')
+		})
+	}
   render() {
 		const { movie } = this.props;
     return (
@@ -18,6 +30,9 @@ class MovieCard extends React.Component {
 					<Card.Footer>
 						<Link to={`/movies/${movie._id}`}>
 							<Button className='movie-card-btn' variant='link'>Open</Button>
+						</Link>
+						<Link to="#" onClick={() => {this.addToFav(movie._id)}}>
+							<Button className='movie-card-btn' variant='link'>Add to Favorites</Button>
 						</Link>
 					</Card.Footer>
 				</Card>

@@ -27,12 +27,13 @@
 	};
 
 	.card-footer {
-		text-align: center;
 		margin-top: auto;
-	}
+		display: flex;
+		justify-content: space-evenly;
 
-	.movie-card-btn {
-		color: #fff;
-		background-color:#464646;
+		.movie-card-btn {
+			color: #fff;
+			background-color:#464646;
+		}
 	}
 }

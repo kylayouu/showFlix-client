@@ -12,10 +12,10 @@ class ProfileView extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			Username: null,
-			Password: null,
-			Email: null,
-			Birthday: null,
+			Username: '',
+			Password: '',
+			Email: '',
+			Birthday: '',
 		};
 	}
 
@@ -44,14 +44,6 @@ class ProfileView extends React.Component {
 		}).catch(error => {
 			console.log(error)
 		})
-	}
-
-	onLoggedOut() {
-		localStorage.removeItem('token');
-		localStorage.removeItem('user');
-		this.setState({
-			user: null
-		});
 	}
 
 	removeUser = () => {
@@ -114,7 +106,7 @@ ProfileView.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string.isRequired
+    Birthday: PropTypes.string.isRequired
   })
 };
 

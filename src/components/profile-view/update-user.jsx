@@ -9,10 +9,10 @@ class UpdateUser extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			Username: null,
-			Password: null,
-			Email: null,
-			Birthdate: null,
+			Username: '',
+			Password: '',
+			Email: '',
+			Birthday: '',
 		};
 	}
 
@@ -22,7 +22,7 @@ class UpdateUser extends React.Component {
 			this.setState({
 				user: localStorage.getItem('user')
 			});
-			this.getUser(accessToken);
+		this.getUser(accessToken);
 		}
 	}
 
@@ -31,42 +31,36 @@ class UpdateUser extends React.Component {
 		axios.get(`https://cryptic-tor-08539.herokuapp.com/users/${Username}`, {
 			headers: { Authorization: `Bearer ${token}` }
 		}).then(response => {
+			console.log(response)
+			const dateFormat = new Date(response.data.Birthday).getMonth().toString().length == 1 ? "0" + new Date(response.data.Birthday).getMonth() : new Date(response.data.Birthday).getMonth();
 			this.setState({
 				Username: response.data.Username,
 				Password: response.data.Password,
 				Email: response.data.Email,
-				Birthdate: response.data.Birthdate,
+				Birthday: new Date(response.data.Birthday).getFullYear() + "-" + dateFormat + "-" + new Date(response.data.Birthday).getDate() 
 			});
 		}).catch(error => {
 			console.log(error)
 		})
 	}
 
-	editUsername = (e) => {
-		this.setState({
-			Username: e.target.value
-		})
+	editUsername(value) {
+		this.state.Username = value;
 	}
 
-	editPassword = (e) => {
-		this.setState({
-			Password: e.target.value
-		})
+	editPassword(value) {
+		this.state.Password = value;
 	}
 
-	editEmail = (e) => {
-		this.setState({
-			Email: e.target.value
-		})
+	editEmail(value) {
+		this.state.Email = value;
 	}
 
-	editBirthdate = (e) => {
-		this.setState({
-			Birthdate: e.target.value
-		})
+	editBirthday(value) {
+		this.state.Birthday = value;
 	}
 
-	handleUpdate = (e) => {
+	handleUpdate(e) {
 		e.preventDefault();
 		const accessToken = localStorage.getItem('token');
 		const Username = localStorage.getItem('user')
@@ -75,22 +69,26 @@ class UpdateUser extends React.Component {
 			Username: this.state.Username,
 			Password: this.state.Password,
 			Email: this.state.Email,
-			Birthdate: this.state.Birthdate
+			Birthday: this.state.Birthday
 		}, { headers: { Authorization: `Bearer ${accessToken}`} 
 		}).then(response => {
 			this.setState({
 				Username: response.data.Username,
 				Password: response.data.Password,
 				Email: response.data.Email,
-				Birthdate: response.data.Birthdate
+				Birthday: new Date(response.data.Birthday).getFullYear() + "-" + new Date(response.data.Birthday).getMonth() + "-" + new Date(response.data.Birthday).getDate()
 			});
+			localStorage.setItem('user', this.state.Username);
+			const data = response.data;
+			console.log(data);
+			alert('User information has been updated.')
 		}).catch(error => {
 			console.log(error);
 		});
 	}
 
 	render() {
-		const { Username, Email, Birthdate } = this.state;
+		const { Username, Email, Birthday } = this.state;
 		return (
 			<div className='update-user'>
 						<Card>
@@ -98,19 +96,19 @@ class UpdateUser extends React.Component {
 								Update Information
 							</Card.Title>
 							<Card.Body>
-							<Form onSubmit={(e) => handleUpdate(e)}>
+							<Form onSubmit={(e) => this.handleUpdate(e)}>
 								<Form.Label>Username</Form.Label>
-								<Form.Control type='text' name='Username' defaultValue={Username} onChange={e => editUsername(e)}/>
+								<Form.Control type='text' name='Username' disabled="disabled" defaultValue={Username} onChange={(e) => this.editUsername(e.target.value)}/>
 								<Form.Label>Password</Form.Label>
-								<Form.Control type='password' name='Password' defaultValue='Password' onChange={e => editPassword(e)}/>
+								<Form.Control type='password' name='Password' defaultValue='Password' onChange={(e) => this.editPassword(e.target.value)}/>
 								<Form.Label>Email</Form.Label>
-								<Form.Control type='email' name='email' defaultValue={Email} onChange={e => editEmail(e)}/>
-								<Form.Label>Birthdate</Form.Label>
-								<Form.Control type='date' name='birthdate' defaultValue={Birthdate} onChange={e => editBirthdate(e)}/>
+								<Form.Control type='email' name='Email' defaultValue={Email} onChange={(e) => this.editEmail(e.target.value)}/>
+								<Form.Label>Birthday</Form.Label>
+								<Form.Control type='date' name='Birthday' defaultValue={Birthday} onChange={(e) => this.editBirthday(e.target.value)}/>
 							</Form>
 							</Card.Body>
 							<Card.Footer>
-								<Button variant='primary' type='submit'>Update</Button>
+								<Button variant='primary' type='submit' onClick={(e) => this.handleUpdate(e)}>Update</Button>
 							</Card.Footer>
 						</Card>
 				
@@ -124,7 +122,7 @@ UpdateUser.propTypes = {
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Birthdate: PropTypes.string.isRequired
+    Birthday: PropTypes.string.isRequired
   })
 };
 

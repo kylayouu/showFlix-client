@@ -24,10 +24,11 @@
   margin: auto;
 }
 .movie-card .card-footer {
-  text-align: center;
   margin-top: auto;
+  display: flex;
+  justify-content: space-evenly;
 }
-.movie-card .movie-card-btn {
+.movie-card .card-footer .movie-card-btn {
   color: #fff;
   background-color: #464646;
 }

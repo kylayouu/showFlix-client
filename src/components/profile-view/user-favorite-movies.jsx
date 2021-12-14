@@ -82,7 +82,7 @@ class UserFavoriteMovies extends React.Component {
                       </Card.Body>
                     </Link>
                     <Card.Footer>
-                      <Button className='movie-card-btn' variant='primary' onClick={() => {this.removeFaveMovie(movies._id)}}>Remove</Button>
+                      <Button variant='danger' onClick={() => {this.removeFaveMovie(movies._id)}}>Remove</Button>
                     </Card.Footer>
                   </Card>
                 </CardGroup>
