@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Form, Card, Container, Row, Col, Button } from 'react-bootstrap';
 import './registration-view.scss';
+import { Link } from 'react-router-dom';
 
-function RegistrationView(props) {
-	const [ email, setEmail ] = useState('');
+function RegistrationView() {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+	const [ email, setEmail ] = useState('');
+	const [ birthdate, setBirthdate ] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, username, password);
-    props.onRegistration(username);
+    console.log( username, password, email, birthdate);
+		axios.post('https://cryptic-tor-08539.herokuapp.com/users/register', {
+			Username: username,
+			Password: password,
+			Email: email,
+			Birthdate: birthdate
+		})
+		.then(response => {
+			const data = response.data;
+			console.log(data);
+			window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+		})
+		.catch(e => {
+			console.log('error registering the user')
+		});
   };
 
   return (
@@ -28,7 +44,7 @@ function RegistrationView(props) {
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Birthdate:</Form.Label>
-									<Form.Control type='text' placeholder='Enter your birthdate ( DD-MM-YYYY)' value={username} onChange={e => setUsername(e.target.value)} />
+									<Form.Control type='date' placeholder='Enter your birthdate' value={birthdate} onChange={e => setBirthdate(e.target.value)} />
 								</Form.Group>
 								<Form.Group>
 									<Form.Label>Username:</Form.Label>
@@ -44,6 +60,12 @@ function RegistrationView(props) {
 							<Button type='submit' variant='primary' onClick={handleSubmit}>Submit</Button>
 						</Card.Footer>
 					</Card>
+					<div className='user-status'>
+						Already have an account?
+						<span className='user-status'>
+							<Link to={`/`}>Log In</Link>
+						</span>
+					</div>
 				</Col>
 			</Row>
 		</Container>
@@ -52,11 +74,11 @@ function RegistrationView(props) {
 
 RegistrationView.propTypes = {
 	newUser: PropTypes.shape({
-		Email: PropTypes.string.isRequired,
-		Birthdate: PropTypes.string.isRequired,
 		Username: PropTypes.string.isRequired,
 		Password: PropTypes.string.isRequired,
-	}).isRequired,
+		Email: PropTypes.string.isRequired,
+		Birthdate: PropTypes.string.isRequired
+	})
 };
 
 export default RegistrationView;

@@ -1,0 +1,26 @@
+.page-title-row {
+	padding-bottom: 2em;
+	text-transform: capitalize;
+}
+
+.profile-info-card {
+	height: fit-content;
+	font-size: 18px;
+
+	.card-title {
+		padding: 1em;
+		padding-bottom: 0;
+		font-size: 22px;
+		font-weight: bold;
+		text-align: center;
+		text-decoration: underline;
+	}
+	
+	.card-body {
+		padding-top: 0;
+	}
+
+	.card-footer {
+		text-align: center;
+	}
+}

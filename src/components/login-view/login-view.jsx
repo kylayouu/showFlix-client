@@ -5,6 +5,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { Card, Col } from 'react-bootstrap';
 import './login-view.scss';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -14,8 +17,17 @@ function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
-    /* then call props.onLoggedIn(username) */
-    props.onLoggedIn(username);
+		axios.post('https://cryptic-tor-08539.herokuapp.com/login', {
+			Username: username,
+			Password: password
+		})
+		.then(response => {
+			const data = response.data;
+			props.onLoggedIn(data)
+		})
+		.catch(e =>{
+			console.log('No such user')
+		});
   };
 
   return (
@@ -40,10 +52,24 @@ function LoginView(props) {
 							<Button variant='primary' type='submit' onClick={handleSubmit}>Submit</Button>
 						</Card.Footer>
 					</Card>
+					<div className='user-status'>
+						New User?
+						<span className='user-status'>
+							<Link to={`/register`}>Register Here</Link>
+						</span>
+					</div>
 				</Col>
 			</Row>
 		</Container>
   );
+};
+
+LoginView.propTypes = {
+	login: PropTypes.shape({
+		username: PropTypes.string.isRequired,
+		password: PropTypes.string.isRequired
+	}),
+	onLoggedIn: PropTypes.func.isRequired
 };
 
 export default LoginView;

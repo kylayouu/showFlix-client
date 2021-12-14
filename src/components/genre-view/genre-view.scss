@@ -1,0 +1,28 @@
+.genre-view-container {
+	height: 100vh;
+	padding: 4em 0em;
+
+	.genre-card-info {
+		padding: 2em;
+	}
+
+	.genre-name {
+		font-size: 32px;
+		font-weight: bold;
+		text-align: center;
+	}
+
+	.label {
+		font-weight: bold;
+		font-size: 22px;
+	}
+
+	.genre-description {
+		font-size: 22px;
+		padding: .5em 0;
+	}
+
+	button {
+		font-size: 20px;
+	}
+}
