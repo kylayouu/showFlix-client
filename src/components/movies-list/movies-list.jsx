@@ -12,6 +12,7 @@ const mapStateToProps = state => {
 
 function MoviesList(props) {
 	const { movies, visibilityFilter } = props;
+	//console.log(movies)
 	let filteredMovies = movies;
 
 	if (visibilityFilter !== '') {
@@ -22,9 +23,8 @@ function MoviesList(props) {
 
 	return (
 	<>
-		<Col md={12} style={{ margin: '1em' }} key={movies._id}>
+		<Col md={12} style={{ margin: '1em' }}>
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-			{/* maybe add key={movies._id} */}
     </Col>
 		{filteredMovies.map(m => (
 			<Col className='d-flex justify-content-center' md={6} lg={4} xl={3} key={movies._id}>
