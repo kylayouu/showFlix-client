@@ -5,5 +5,5 @@ Welcome to showFlix! A movie app that lets users search through movies and learn
 
 
 ## Project Dependencies
--- React
--- Redux
+- React
+- Redux
