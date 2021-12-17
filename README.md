@@ -11,5 +11,5 @@ Welcome to showFlix! A movie app that lets users search through movies and learn
 
 ## Test login credential
 
-Username: sampletest1update
-Password: samplepw1
+- Username: sampletest1update
+= Password: samplepw1
