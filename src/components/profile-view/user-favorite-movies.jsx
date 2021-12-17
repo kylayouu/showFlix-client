@@ -48,7 +48,7 @@ class UserFavoriteMovies extends React.Component {
     const accessToken = localStorage.getItem('token');
     const Username = localStorage.getItem('user');
 
-    axios.delete(`https://cryptic-tor-08539.herokuapp.com/users/${Username}/favorites/` + (id), {
+    axios.delete(`https://cryptic-tor-08539.herokuapp.com/users/${Username}/favorites/${id}`, {
       headers: { Authorization: `Bearer ${accessToken}`}
     }).then(response => {
       console.log(response.data.FavoriteMovies);
