@@ -18,6 +18,7 @@ class MovieCard extends React.Component {
 			alert ('Failed to add move to favorites.')
 		})
 	}
+	
   render() {
 		const { movie } = this.props;
     return (
