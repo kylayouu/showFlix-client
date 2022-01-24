@@ -19,7 +19,6 @@
   "homepage": "https://github.com/kylayouu/showFlix-client#readme",
   "dependencies": {
     "axios": "^0.24.0",
-    "parcel": "^2.0.0-rc.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
@@ -30,6 +29,7 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
   }
 }
